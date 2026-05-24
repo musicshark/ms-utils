@@ -125,7 +125,7 @@ def delete_session_tracker_entry(db_day_hash):
 if __name__ == "__main__":
 
     MS_API_SERVER = "http://127.0.0.1:5000"
-    SESSION_UPLOAD_TRACKER_PATH = "./db/session_upload_tracker.db"
+    SESSION_UPLOAD_TRACKER_PATH = "../../MusicSharkSim/db/session_upload_tracker.db"
 
     db_day_hash, db_day_name, session_number = obtain_previous_session_info()
     session_name = "session_" + str(session_number).zfill(6)
@@ -133,7 +133,7 @@ if __name__ == "__main__":
     print(db_day_name)
     print(session_name)
 
-    db_filepath = f"./db/{db_day_name}.db"
+    db_filepath = f"../../MusicSharkSim/db/{db_day_name}.db"
     asyncio.run(send_data_to_server(db_filepath, db_day_name, session_number, session_name, db_day_hash))
     delete_session_tracker_entry(db_day_hash)
 
