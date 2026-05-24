@@ -43,7 +43,7 @@ def init_db():
 #@app.route('/test', methods=['GET'])
 @app.route('/update_dbs/<username>/<day_id>/<session>/<UUID>', methods=['GET','POST'])
 def test(username, day_id, session, UUID):
-    incoming_data = f"/home/miles/src/musicshark/musicshark_sim/db/{day_id}.db"
+    incoming_data = request.get_json()
 
     try:
         db_day_dir_path = f"{username}/db_day/"
@@ -55,8 +55,8 @@ def test(username, day_id, session, UUID):
     except OSError as e:
         return jsonify({'error': f'Unable to create DB Paths: {e}'}), 400
  
-    table = "session_" + str(session).zfill(6)
-    db_data_list, note_dict =  get_db_values(incoming_data, table)
+    #table = "session_" + str(session).zfill(6)
+    db_data_list, note_dict =  retrieve_json(incoming_data)
     
     current_session_dict = update_current_session_dict(db_data_list, note_dict)
     current_session_dict["table_name"] = "session_" + str(session).zfill(6)

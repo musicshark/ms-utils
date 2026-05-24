@@ -409,9 +409,9 @@ if __name__ == "__main__":
     SESSION_UPLOAD_TRACKER_DB_PATH = "./db/session_upload_tracker.db"
 
     # Check for or create db_day file
-    db_file_day = str(datetime.now().strftime("%Y%m%d"))
+#    db_file_day = str(datetime.now().strftime("%Y%m%d"))
+    db_file_day = str(datetime.now().strftime("%Y%m%M"))
     db_day_filepath = db_create_filepath(db_file_day)
-    #db_file_day = datetime.now().strftime("%Y%m%M")
 #    db_day_date = str(f"{db_file_day}")
 #    db_day_filepath = db_create_filepath(version, db_day_date)
 #    if not os.path.exists(f"{db_day_filepath}"):
